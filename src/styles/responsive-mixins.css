@@ -1,0 +1,172 @@
+/* Container Mixins and Responsive Helpers */
+
+/* Fluid container that adapts to screen size */
+.container-responsive {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+  padding-right: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+/* Breakpoint-specific containers */
+@media (min-width: 320px) {
+  .container-responsive {
+    max-width: var(--container-xs);
+  }
+}
+
+@media (min-width: 480px) {
+  .container-responsive {
+    max-width: var(--container-sm);
+  }
+}
+
+@media (min-width: 768px) {
+  .container-responsive {
+    max-width: var(--container-md);
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: var(--container-lg);
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: var(--container-xl);
+  }
+}
+
+@media (min-width: 1440px) {
+  .container-responsive {
+    max-width: var(--container-2xl);
+  }
+}
+
+/* Responsive typography scale */
+.text-responsive-sm {
+  font-size: clamp(0.75rem, 2vw, var(--font-size-sm));
+}
+
+.text-responsive-base {
+  font-size: clamp(var(--font-size-sm), 2.5vw, var(--font-size-base));
+}
+
+.text-responsive-lg {
+  font-size: clamp(var(--font-size-base), 3vw, var(--font-size-lg));
+}
+
+.text-responsive-xl {
+  font-size: clamp(var(--font-size-lg), 4vw, var(--font-size-xl));
+}
+
+.text-responsive-2xl {
+  font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-2xl));
+}
+
+.text-responsive-3xl {
+  font-size: clamp(var(--font-size-2xl), 6vw, var(--font-size-3xl));
+}
+
+.text-responsive-4xl {
+  font-size: clamp(2rem, 7vw, var(--font-size-4xl));
+}
+
+/* Responsive spacing */
+.p-responsive {
+  padding: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+.px-responsive {
+  padding-left: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+  padding-right: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+.py-responsive {
+  padding-top: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+  padding-bottom: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+.m-responsive {
+  margin: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+.mx-responsive {
+  margin-left: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+  margin-right: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+.my-responsive {
+  margin-top: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+  margin-bottom: clamp(var(--spacing-sm), 3vw, var(--spacing-xl));
+}
+
+/* Responsive gaps for flexbox and grid */
+.gap-responsive {
+  gap: clamp(var(--spacing-sm), 2vw, var(--spacing-lg));
+}
+
+.gap-responsive-sm {
+  gap: clamp(var(--spacing-xs), 1vw, var(--spacing-sm));
+}
+
+.gap-responsive-lg {
+  gap: clamp(var(--spacing-md), 3vw, var(--spacing-xl));
+}
+
+/* Touch-friendly interactive elements */
+@media (hover: none) {
+  .touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn,
+  .link {
+    min-height: 44px;
+  }
+}
+
+/* High DPI / Retina display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .crisp-edges {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn,
+  .link {
+    border-width: 2px;
+    border-style: solid;
+  }
+
+  .btn--primary {
+    border-color: var(--text-white);
+  }
+
+  .btn--secondary,
+  .link--secondary {
+    border-color: currentColor;
+  }
+}
