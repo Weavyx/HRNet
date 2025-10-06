@@ -99,6 +99,8 @@
 
 .modal__close-icon {
   font-size: 24px;
+  height: 26px;
+  width: 24px;
   line-height: 1;
   font-weight: bold;
 }
