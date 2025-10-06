@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEmployees } from '../hooks/useEmployees';
 import Link from '../components/Link';
 import Button from '../components/Button';
-import DatePicker from '../components/DatePicker';
+import CustomDatePicker from '../components/DatePicker';
 import Select from '../components/Select';
 import SuccessModal from '../components/SuccessModal';
 import { US_STATES, DEPARTMENTS } from '../constants/formOptions';
@@ -350,7 +350,7 @@ function CreateEmployee() {
 
           <div className="create-employee__field">
             <label htmlFor="date-of-birth" className="create-employee__label">Date of Birth</label>
-            <DatePicker
+            <CustomDatePicker
               id="date-of-birth"
               selected={formData.dateOfBirth}
               onChange={(date) => handleDateChange(date, 'dateOfBirth')}
@@ -368,12 +368,16 @@ function CreateEmployee() {
 
           <div className="create-employee__field">
             <label htmlFor="start-date" className="create-employee__label">Start Date</label>
-            <DatePicker
+            <CustomDatePicker
               id="start-date"
               selected={formData.startDate}
               onChange={(date) => handleDateChange(date, 'startDate')}
               placeholderText="Select start date..."
-              minDate={new Date()}
+              minDate={(() => {
+                const oneYearAgo = new Date();
+                oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+                return oneYearAgo;
+              })()}
               className={errors.startDate && touched.startDate ? 'create-employee__input--error' : ''}
             />
             {errors.startDate && touched.startDate && (
