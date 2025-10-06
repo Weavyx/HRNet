@@ -1,0 +1,342 @@
+/* Select personnalisé - Intégration avec le design system HRNet */
+/* Optimisé pour des performances rapides */
+
+/* Reset des styles par défaut de @szhsin/react-menu */
+.select-menu {
+  width: 100%;
+}
+
+/* Variables pour animations optimisées */
+:root {
+  --select-transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --select-transition-micro: 0.08s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Bouton principal du select */
+.select-button {
+  width: 100%;
+  padding: 0.875rem var(--spacing-md);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  cursor: pointer;
+  transition: border-color var(--select-transition-fast),
+    box-shadow var(--select-transition-fast),
+    transform var(--select-transition-micro);
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-family);
+  font-weight: 400;
+  text-align: left;
+}
+
+.select-button:hover {
+  border-color: var(--border-medium);
+}
+
+.select-button:focus,
+.select-button[data-state="open"] {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Texte du bouton */
+.select-button__text {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Flèche du select */
+.select-button__arrow {
+  margin-left: var(--spacing-sm);
+  transition: transform var(--select-transition-fast);
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  will-change: transform;
+}
+
+.select-button[data-state="open"] .select-button__arrow {
+  transform: rotate(180deg);
+}
+
+/* Liste déroulante - Optimisée pour les performances */
+.select-menu-list {
+  background-color: var(--background-light);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xs) 0;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  /* Optimisations performance */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Container de recherche */
+.select-search-container {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Input de recherche */
+.select-search-input {
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  transition: all var(--transition-base);
+  box-sizing: border-box;
+}
+
+.select-search-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+
+/* Items de menu - Optimisés pour interactions rapides */
+.select-menu-item {
+  padding: 0.75rem var(--spacing-md);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--select-transition-micro),
+    color var(--select-transition-micro);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  display: block;
+  will-change: background-color, color;
+}
+
+.select-menu-item:hover {
+  background-color: rgba(102, 126, 234, 0.1);
+  color: var(--primary-color);
+}
+
+.select-menu-item:focus {
+  outline: none;
+  background-color: rgba(102, 126, 234, 0.15);
+  color: var(--primary-color);
+}
+
+/* Item sélectionné */
+.select-menu-item--selected {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+  font-weight: 600;
+}
+
+.select-menu-item--selected:hover,
+.select-menu-item--selected:focus {
+  background: var(--primary-gradient);
+  color: var(--text-white);
+}
+
+/* Item vide/désactivé */
+.select-menu-item--empty {
+  color: var(--text-secondary);
+  font-style: italic;
+  cursor: not-allowed;
+}
+
+.select-menu-item--empty:hover {
+  background-color: transparent;
+  color: var(--text-secondary);
+}
+
+/* Configuration @szhsin/react-menu optimisée */
+.szh-menu {
+  --szh-menu--transition-duration: 0ms !important;
+}
+
+/* Ouverture avec animation légère */
+.szh-menu__portal > .szh-menu {
+  animation: menu-fast-in 100ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Fermeture instantanée */
+.szh-menu__portal > .szh-menu[data-state="closing"] {
+  display: none !important;
+}
+
+/* Animation d'ouverture uniquement */
+@keyframes menu-fast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Suppression des animations par défaut des items */
+.szh-menu__item {
+  animation: none !important;
+  transition: background-color var(--select-transition-micro) !important;
+}
+
+/* Overrides agressifs pour fermeture instantanée */
+.szh-menu__portal {
+  transition: none !important;
+}
+
+.szh-menu[data-state="closing"],
+.szh-menu[data-state="closed"] {
+  display: none !important;
+}
+
+.szh-menu__portal[data-state="closing"] {
+  display: none !important;
+}
+
+/* Force la disparition immédiate */
+.szh-menu__portal > .szh-menu[data-state="closing"] * {
+  display: none !important;
+}
+
+/* Scrollbar personnalisée pour la liste */
+.select-menu-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.select-menu-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-sm);
+}
+
+.select-menu-list::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+.select-menu-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.5);
+}
+
+/* Responsive Design */
+
+/* Mobile portrait */
+@media (max-width: 479px) {
+  .select-button {
+    font-size: max(16px, var(--font-size-base)); /* Évite le zoom sur iOS */
+    padding: 0.875rem var(--spacing-sm);
+  }
+
+  .select-menu-list {
+    max-height: 250px;
+    min-width: 280px;
+  }
+
+  .select-menu-item {
+    padding: var(--spacing-md) var(--spacing-sm);
+    font-size: max(16px, var(--font-size-base));
+  }
+
+  .select-search-input {
+    font-size: max(16px, var(--font-size-sm));
+  }
+}
+
+/* Mobile landscape */
+@media (min-width: 480px) and (max-width: 767px) {
+  .select-menu-list {
+    min-width: 300px;
+  }
+}
+
+/* Tablet et desktop */
+@media (min-width: 768px) {
+  .select-button {
+    font-size: var(--font-size-base);
+  }
+
+  .select-menu-list {
+    min-width: 250px;
+  }
+}
+
+/* Intégration avec les préférences d'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --select-transition-fast: 0ms !important;
+    --select-transition-micro: 0ms !important;
+  }
+
+  .select-button,
+  .select-menu-item,
+  .select-button__arrow {
+    transition: none !important;
+  }
+
+  .szh-menu {
+    --szh-menu--transition-duration: 0ms !important;
+  }
+
+  .szh-menu__portal > .szh-menu,
+  .szh-menu__portal > .szh-menu[data-state="closing"] {
+    animation: none !important;
+  }
+
+  .szh-menu__item {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Mode haut contraste */
+@media (prefers-contrast: high) {
+  .select-button,
+  .select-menu-list {
+    border-width: 3px;
+  }
+
+  .select-menu-item--selected {
+    border: 2px solid var(--text-white);
+  }
+
+  .select-menu-item:focus {
+    border: 2px solid var(--primary-color);
+  }
+}
+
+/* États d'erreur (pour validation future) */
+.select-button--error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.select-button--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+/* Placeholder style */
+.select-button__text:empty::before,
+.select-button__text[data-placeholder]::before {
+  content: attr(data-placeholder);
+  color: var(--text-secondary);
+  font-style: italic;
+}
