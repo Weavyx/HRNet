@@ -1,5 +1,6 @@
-export const US_STATES = [
-  { value: "AL", label: "Alabama" },
+// Freeze pour optimisation - empêche les mutations accidentelles
+export const US_STATES = Object.freeze([
+  Object.freeze({ value: "AL", label: "Alabama" }),
   { value: "AK", label: "Alaska" },
   { value: "AZ", label: "Arizona" },
   { value: "AR", label: "Arkansas" },
@@ -46,15 +47,15 @@ export const US_STATES = [
   { value: "VT", label: "Vermont" },
   { value: "VA", label: "Virginia" },
   { value: "WA", label: "Washington" },
-  { value: "WV", label: "West Virginia" },
-  { value: "WI", label: "Wisconsin" },
-  { value: "WY", label: "Wyoming" },
-];
+  Object.freeze({ value: "WV", label: "West Virginia" }),
+  Object.freeze({ value: "WI", label: "Wisconsin" }),
+  Object.freeze({ value: "WY", label: "Wyoming" }),
+]);
 
-export const DEPARTMENTS = [
-  { value: "Sales", label: "Sales" },
-  { value: "Marketing", label: "Marketing" },
-  { value: "Engineering", label: "Engineering" },
-  { value: "Human Resources", label: "Human Resources" },
-  { value: "Legal", label: "Legal" },
-];
+export const DEPARTMENTS = Object.freeze([
+  Object.freeze({ value: "Sales", label: "Sales" }),
+  Object.freeze({ value: "Marketing", label: "Marketing" }),
+  Object.freeze({ value: "Engineering", label: "Engineering" }),
+  Object.freeze({ value: "Human Resources", label: "Human Resources" }),
+  Object.freeze({ value: "Legal", label: "Legal" }),
+]);

@@ -8,7 +8,7 @@ const CustomDatePicker = ({
   onChange,
   className = '',
   placeholderText = 'Select date...',
-  dateFormat = 'dd/MM/yyyy',
+  dateFormat = 'MM/dd/yyyy',
   maxDate = null,
   minDate = null,
   id,
@@ -49,7 +49,7 @@ const CustomDatePicker = ({
             className="react-datepicker__navigation react-datepicker__navigation--previous"
             onClick={decreaseMonth}
             disabled={prevMonthButtonDisabled}
-            aria-label="Mois précédent"
+            aria-label="Previous month"
           >
             <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--previous">
             </span>
@@ -60,11 +60,11 @@ const CustomDatePicker = ({
               className="react-datepicker__month-select"
               value={date.getMonth()}
               onChange={(e) => changeMonth(parseInt(e.target.value))}
-              aria-label="Sélectionner le mois"
+              aria-label="Select month"
             >
               {Array.from({ length: 12 }, (_, i) => (
                 <option key={i} value={i}>
-                  {new Date(2000, i).toLocaleDateString('fr-FR', { month: 'long' })}
+                  {new Date(2000, i).toLocaleDateString('en-US', { month: 'long' })}
                 </option>
               ))}
             </select>
@@ -73,7 +73,7 @@ const CustomDatePicker = ({
               className="react-datepicker__year-select"
               value={date.getFullYear()}
               onChange={(e) => changeYear(parseInt(e.target.value))}
-              aria-label="Sélectionner l'année"
+              aria-label="Select year"
             >
               {(() => {
                 const currentYear = new Date().getFullYear();
@@ -112,7 +112,7 @@ const CustomDatePicker = ({
             className="react-datepicker__navigation react-datepicker__navigation--next"
             onClick={increaseMonth}
             disabled={nextMonthButtonDisabled}
-            aria-label="Mois suivant"
+            aria-label="Next month"
           >
             <span className="react-datepicker__navigation-icon react-datepicker__navigation-icon--next">
             </span>

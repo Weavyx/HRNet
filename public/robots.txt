@@ -1,0 +1,7 @@
+# Robots.txt pour HRNet
+# https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+
+# Autoriser l'indexation de l'application
+Allow: /

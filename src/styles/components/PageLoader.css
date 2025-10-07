@@ -1,0 +1,132 @@
+/* PageLoader Styles */
+.page-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-2xl);
+  min-height: 200px;
+  background: transparent;
+}
+
+.page-loader--small {
+  min-height: 100px;
+  padding: var(--spacing-lg);
+}
+
+.page-loader--large {
+  min-height: 60vh;
+  padding: var(--spacing-2xl);
+}
+
+/* Variante pour fond clair (ex: dans des modales) */
+.page-loader--light-bg .page-loader__message {
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+.page-loader--light-bg .page-loader__spinner {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.page-loader__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.page-loader__spinner {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.page-loader--small .page-loader__spinner {
+  width: 40px;
+  height: 40px;
+}
+
+.page-loader--large .page-loader__spinner {
+  width: 80px;
+  height: 80px;
+}
+
+.page-loader__spinner-inner {
+  width: 100%;
+  height: 100%;
+  border: 4px solid rgba(102, 126, 234, 0.2);
+  border-top: 4px solid #667eea;
+  border-right: 4px solid #764ba2;
+  border-radius: 50%;
+  animation: page-loader-spin 1s linear infinite;
+}
+
+.page-loader__message {
+  color: var(--text-white);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  animation: page-loader-fade 2s ease-in-out infinite;
+}
+
+.page-loader--small .page-loader__message {
+  font-size: var(--font-size-base);
+}
+
+.page-loader--large .page-loader__message {
+  font-size: var(--font-size-xl);
+}
+
+/* Animations */
+@keyframes page-loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes page-loader-fade {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .page-loader__message {
+    color: var(--text-white);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .page-loader__spinner-inner,
+  .page-loader__message {
+    animation: none;
+  }
+
+  .page-loader__spinner-inner {
+    border: 4px solid #667eea;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .page-loader__spinner-inner div {
+    border-width: 4px;
+  }
+
+  .page-loader__message {
+    font-weight: 600;
+    opacity: 1;
+  }
+}

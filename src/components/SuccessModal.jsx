@@ -12,12 +12,12 @@ function SuccessModal({
   if (!employeeData) return null;
 
   const formatDate = (dateString) => {
-    if (!dateString) return 'Non renseigné';
+    if (!dateString) return 'Not provided';
     return dateString;
   };
 
   const formatDepartment = (dept) => {
-    return dept || 'Non renseigné';
+    return dept || 'Not provided';
   };
 
   const formatAddress = (street, city, state, zipCode) => {
@@ -27,14 +27,14 @@ function SuccessModal({
     if (state) parts.push(state);
     if (zipCode) parts.push(zipCode);
 
-    return parts.length > 0 ? parts.join(', ') : 'Non renseignée';
+    return parts.length > 0 ? parts.join(', ') : 'Not provided';
   };
 
   return (
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title="Employé créé avec succès !"
+      title="Employee created successfully!"
       className="modal--success"
     >
       <div className="success-message">
@@ -43,24 +43,24 @@ function SuccessModal({
         </div>
 
         <h3 className="success-message__title">
-          Félicitations !
+          Congratulations!
         </h3>
 
         <p className="success-message__description">
-          Le nouvel employé a été ajouté avec succès à votre base de données.
-          Vous pouvez maintenant consulter la liste des employés ou créer un nouvel employé.
+          The new employee has been successfully added to your database.
+          You can now view the employee list or create another employee.
         </p>
 
         <div className="success-message__employee-info">
           <div className="employee-info__row">
-            <span className="employee-info__label">Nom complet :</span>
+            <span className="employee-info__label">Full name:</span>
             <span className="employee-info__value">
               {employeeData.firstName} {employeeData.lastName}
             </span>
           </div>
 
           <div className="employee-info__row">
-            <span className="employee-info__label">Département :</span>
+            <span className="employee-info__label">Department:</span>
             <span className="employee-info__value">
               {formatDepartment(employeeData.department)}
             </span>
@@ -68,7 +68,7 @@ function SuccessModal({
 
           {employeeData.dateOfBirth && (
             <div className="employee-info__row">
-              <span className="employee-info__label">Date de naissance :</span>
+              <span className="employee-info__label">Date of birth:</span>
               <span className="employee-info__value">
                 {formatDate(employeeData.dateOfBirth)}
               </span>
@@ -77,7 +77,7 @@ function SuccessModal({
 
           {employeeData.startDate && (
             <div className="employee-info__row">
-              <span className="employee-info__label">Date de début :</span>
+              <span className="employee-info__label">Start date:</span>
               <span className="employee-info__value">
                 {formatDate(employeeData.startDate)}
               </span>
@@ -85,7 +85,7 @@ function SuccessModal({
           )}
 
           <div className="employee-info__row">
-            <span className="employee-info__label">Adresse :</span>
+            <span className="employee-info__label">Address:</span>
             <span className="employee-info__value">
               {formatAddress(
                 employeeData.street,
@@ -107,7 +107,7 @@ function SuccessModal({
               onClose();
             }}
           >
-            Voir les employés
+            View employees
           </Link>
 
           <Button
@@ -118,7 +118,7 @@ function SuccessModal({
               onClose();
             }}
           >
-            Créer un autre employé
+            Create another employee
           </Button>
         </div>
       </div>

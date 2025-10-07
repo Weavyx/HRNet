@@ -7,6 +7,7 @@ import CustomDatePicker from '../components/DatePicker';
 import Select from '../components/Select';
 import SuccessModal from '../components/SuccessModal';
 import { US_STATES, DEPARTMENTS } from '../constants/formOptions';
+import { formatDateToUS } from '../utils/dateUtils';
 
 function CreateEmployee() {
   const { createEmployee } = useEmployees();
@@ -259,11 +260,11 @@ function CreateEmployee() {
       return;
     }
 
-    // Formater les dates pour l'enregistrement
+    // Format dates for storage (MM/DD/YYYY)
     const employeeData = {
       ...formData,
-      dateOfBirth: formData.dateOfBirth ? formData.dateOfBirth.toLocaleDateString('fr-FR') : '',
-      startDate: formData.startDate ? formData.startDate.toLocaleDateString('fr-FR') : ''
+      dateOfBirth: formatDateToUS(formData.dateOfBirth),
+      startDate: formatDateToUS(formData.startDate)
     };
 
     // Créer l'employé via Redux

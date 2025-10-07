@@ -1,0 +1,46 @@
+/* Critical CSS - Above the fold styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #667eea;
+  --text-primary: #374151;
+  --background-light: #ffffff;
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-primary);
+  background-color: var(--background-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Header critique */
+.header {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* Navigation critique */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Loading state - Moved to PageLoader.css for better component isolation */

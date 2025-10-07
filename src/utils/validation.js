@@ -6,24 +6,24 @@ import { US_STATES, DEPARTMENTS } from "../constants/formOptions";
  */
 
 // Validation pour les noms (prénom, nom)
-export const validateName = (value, fieldName = "champ") => {
+export const validateName = (value, fieldName = "field") => {
   if (!value || value.trim().length === 0) {
-    return `Le ${fieldName} est requis`;
+    return `${fieldName} is required`;
   }
   if (value.trim().length < 2) {
-    return `Le ${fieldName} doit contenir au moins 2 caractères`;
+    return `${fieldName} must contain at least 2 characters`;
   }
   if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-    return `Le ${fieldName} ne doit contenir que des lettres, espaces, traits d'union et apostrophes`;
+    return `${fieldName} must contain only letters, spaces, hyphens and apostrophes`;
   }
   return "";
 };
 
 // Validation pour le prénom
-export const validateFirstName = (value) => validateName(value, "prénom");
+export const validateFirstName = (value) => validateName(value, "First name");
 
 // Validation pour le nom
-export const validateLastName = (value) => validateName(value, "nom");
+export const validateLastName = (value) => validateName(value, "Last name");
 
 // Validation pour la date de naissance
 export const validateDateOfBirth = (date) => {
@@ -44,13 +44,13 @@ export const validateDateOfBirth = (date) => {
   }
 
   if (birthDate > today) {
-    return "La date de naissance ne peut pas être dans le futur";
+    return "Birth date cannot be in the future";
   }
   if (age < 16) {
-    return "L'employé doit avoir au moins 16 ans";
+    return "Employee must be at least 16 years old";
   }
   if (age > 120) {
-    return "Veuillez vérifier la date de naissance";
+    return "Please check the birth date";
   }
   return "";
 };
@@ -67,7 +67,7 @@ export const validateStartDate = (date) => {
   oneYearAgo.setFullYear(today.getFullYear() - 1);
 
   if (startDate < oneYearAgo) {
-    return "La date de début ne peut pas être antérieure à un an";
+    return "Start date cannot be more than one year ago";
   }
   return "";
 };
@@ -78,10 +78,10 @@ export const validateStreet = (value) => {
     return ""; // Optionnel
   }
   if (value.trim().length < 5) {
-    return "L'adresse doit contenir au moins 5 caractères";
+    return "Address must contain at least 5 characters";
   }
   if (!/^[a-zA-Z0-9À-ÿ\s,.-]+$/.test(value)) {
-    return "L'adresse contient des caractères non valides";
+    return "Address contains invalid characters";
   }
   return "";
 };
@@ -92,10 +92,10 @@ export const validateCity = (value) => {
     return ""; // Optionnel
   }
   if (value.trim().length < 2) {
-    return "La ville doit contenir au moins 2 caractères";
+    return "City must contain at least 2 characters";
   }
   if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-    return "La ville ne doit contenir que des lettres, espaces, traits d'union et apostrophes";
+    return "City must contain only letters, spaces, hyphens and apostrophes";
   }
   return "";
 };
@@ -107,7 +107,7 @@ export const validateState = (value) => {
   }
   const validStates = US_STATES.map((state) => state.value);
   if (!validStates.includes(value)) {
-    return "Veuillez sélectionner un état valide";
+    return "Please select a valid state";
   }
   return "";
 };
@@ -118,7 +118,7 @@ export const validateZipCode = (value) => {
     return ""; // Optionnel
   }
   if (!/^\d{5}(-\d{4})?$/.test(value)) {
-    return "Le code postal doit être au format 12345 ou 12345-6789";
+    return "Zip code must be in format 12345 or 12345-6789";
   }
   return "";
 };
@@ -126,11 +126,11 @@ export const validateZipCode = (value) => {
 // Validation pour le département
 export const validateDepartment = (value) => {
   if (!value || value.trim().length === 0) {
-    return "Le département est requis";
+    return "Department is required";
   }
   const validDepartments = DEPARTMENTS.map((dept) => dept.value);
   if (!validDepartments.includes(value)) {
-    return "Veuillez sélectionner un département valide";
+    return "Please select a valid department";
   }
   return "";
 };
@@ -138,11 +138,11 @@ export const validateDepartment = (value) => {
 // Validation pour email (utilitaire pour d'autres formulaires)
 export const validateEmail = (value) => {
   if (!value) {
-    return "L'email est requis";
+    return "Email is required";
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(value)) {
-    return "Veuillez saisir un email valide";
+    return "Please enter a valid email";
   }
   return "";
 };
@@ -154,33 +154,41 @@ export const validatePhone = (value) => {
   }
   const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
   if (!phoneRegex.test(value.replace(/[\s\-()]/g, ""))) {
-    return "Veuillez saisir un numéro de téléphone valide";
+    return "Please enter a valid phone number";
   }
   return "";
 };
 
 // Validation générique pour les champs requis
-export const validateRequired = (value, fieldName = "Ce champ") => {
+export const validateRequired = (value, fieldName = "This field") => {
   if (!value || (typeof value === "string" && value.trim().length === 0)) {
-    return `${fieldName} est requis`;
+    return `${fieldName} is required`;
   }
   return "";
 };
 
 // Validation pour longueur minimale
-export const validateMinLength = (value, minLength, fieldName = "Ce champ") => {
+export const validateMinLength = (
+  value,
+  minLength,
+  fieldName = "This field"
+) => {
   if (!value) return "";
   if (value.toString().length < minLength) {
-    return `${fieldName} doit contenir au moins ${minLength} caractères`;
+    return `${fieldName} must contain at least ${minLength} characters`;
   }
   return "";
 };
 
 // Validation pour longueur maximale
-export const validateMaxLength = (value, maxLength, fieldName = "Ce champ") => {
+export const validateMaxLength = (
+  value,
+  maxLength,
+  fieldName = "This field"
+) => {
   if (!value) return "";
   if (value.toString().length > maxLength) {
-    return `${fieldName} ne peut pas dépasser ${maxLength} caractères`;
+    return `${fieldName} cannot exceed ${maxLength} characters`;
   }
   return "";
 };

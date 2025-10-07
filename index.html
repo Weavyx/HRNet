@@ -1,11 +1,103 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>HRNet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="HRNet - Application moderne de gestion des ressources humaines. Créez, gérez et consultez facilement les données de vos employés avec une interface intuitive et responsive." />
+  <meta name="keywords" content="RH, ressources humaines, gestion employés, HRNet, application web" />
+
+  <!-- Optimisations pour mobile -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Critical CSS inline pour éviter le FOUC -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #374151;
+      background-color: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
+    }
+
+    #root {
+      min-height: 100vh
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 200px;
+      font-size: 1.2rem
+    }
+
+    .header {
+      background: #667eea;
+      color: white;
+      padding: 1rem 0;
+      position: relative
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem
+    }
+
+    /* Éviter CLS - Réserver l'espace pour les titres */
+    .employee-list__title,
+    .create-employee__title {
+      min-height: 2.5rem;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    /* Éviter CLS - Footer fixe */
+    .footer {
+      margin-top: auto;
+      min-height: 60px;
+      background: #f8f9fa;
+      border-top: 1px solid #e9ecef;
+    }
+
+    /* Container principal pour éviter CLS */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+  </style>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="HRNet - Gestion des Ressources Humaines" />
+  <meta property="og:description"
+    content="Application moderne de gestion des ressources humaines. Interface intuitive pour gérer vos employés efficacement." />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="HRNet - Gestion des Ressources Humaines" />
+  <meta name="twitter:description"
+    content="Application moderne de gestion des ressources humaines. Interface intuitive pour gérer vos employés efficacement." />
+
+  <title>HRNet - Gestion des Ressources Humaines</title>
 </head>
 
 <body>
