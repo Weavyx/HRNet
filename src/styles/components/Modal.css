@@ -180,6 +180,7 @@
   border-left: 4px solid #10b981;
   backdrop-filter: blur(10px);
   border: 1px solid var(--border-light);
+  width: 70%;
 }
 
 .employee-info__row {

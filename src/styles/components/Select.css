@@ -94,7 +94,7 @@
 
 /* Input de recherche */
 .select-search-input {
-  width: 100%;
+  width: 97%;
   padding: var(--spacing-xs) var(--spacing-sm);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);

@@ -5,13 +5,15 @@ import { AgGridReact } from 'ag-grid-react';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
-import { useMemo } from 'react';
+import { useMemo, useState, useRef } from 'react';
 
 // Enregistrement des modules AG Grid Community
 ModuleRegistry.registerModules([AllCommunityModule]);
 
 function EmployeeList() {
     const { employees } = useEmployees();
+    const [quickFilterText, setQuickFilterText] = useState('');
+    const gridRef = useRef();
 
     // Configuration responsive des colonnes AG Grid
     const columnDefs = useMemo(() => [
@@ -114,14 +116,37 @@ function EmployeeList() {
             </Link>
             <h2 className="employee-list__title">Current Employees ({employees.length})</h2>
 
+            {employees.length > 0 && (
+                <div className="employee-list__search-container">
+                    <input
+                        type="text"
+                        placeholder="🔍 Rechercher dans tous les champs..."
+                        className="employee-list__search-input"
+                        value={quickFilterText}
+                        onChange={(e) => setQuickFilterText(e.target.value)}
+                    />
+                    {quickFilterText && (
+                        <button
+                            className="employee-list__clear-search"
+                            onClick={() => setQuickFilterText('')}
+                            title="Effacer la recherche"
+                        >
+                            ✕
+                        </button>
+                    )}
+                </div>
+            )}
+
             {employees.length === 0 ? (
                 <p className="employee-list__empty">Aucun employé enregistré.</p>
             ) : (
                 <div className="employee-list__grid-container ag-theme-alpine">
                     <AgGridReact
+                        ref={gridRef}
                         rowData={employees}
                         columnDefs={columnDefs}
                         defaultColDef={defaultColDef}
+                        quickFilterText={quickFilterText}
                         pagination={true}
                         paginationPageSize={window.innerWidth < 768 ? 5 : 10}
                         paginationPageSizeSelector={window.innerWidth < 768 ? [5, 10, 20] : [10, 25, 50, 100]}
