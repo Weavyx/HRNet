@@ -69,7 +69,7 @@ HRNet/
 │   │   ├── Footer.jsx
 │   │   └── Header.jsx
 │   ├── pages/               # Pages de l'application
-│   │   ├── EmployeeList.jsx # Liste des employés
+│   │   ├── Employees.jsx # Liste des employés
 │   │   └── Home.jsx         # Page d'accueil/formulaire
 │   └── styles/              # Fichiers de styles CSS
 │       ├── App.css
@@ -127,7 +127,7 @@ HRNet/
 ### Pages actuelles
 
 1. **Page d'accueil** (`/`) - Formulaire de création d'employé
-2. **Liste des employés** (`/employee-list`) - Affichage et gestion des employés
+2. **Liste des employés** (`/employees`) - Affichage et gestion des employés
 
 ### Composants cibles de migration
 
@@ -223,5 +223,5 @@ Pour toute question ou problème :
 
 ---
 
-**Version** : 0.0.0
-**Dernière mise à jour** : 6 octobre 2025
+**Version** : 1.0.0
+**Dernière mise à jour** : 7 octobre 2025

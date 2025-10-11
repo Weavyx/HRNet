@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/components/PageLoader.css';
 
 const PageLoader = ({ size = 'medium', message = 'Loading...', lightBackground = false }) => {

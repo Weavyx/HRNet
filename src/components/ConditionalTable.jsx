@@ -7,7 +7,7 @@ const ConditionalTable = ({ employees, quickFilterText, onGridReady }) => {
   // Si pas d'employés, pas besoin de charger ag-grid
   if (employees.length === 0) {
     return (
-      <div className="employee-list__empty">
+      <div className="employees__empty">
         <div style={{
           textAlign: 'center',
           padding: '2rem',
@@ -31,11 +31,30 @@ const ConditionalTable = ({ employees, quickFilterText, onGridReady }) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#f8f9fa',
-        border: '1px solid #e9ecef',
+        background: 'transparent',
         borderRadius: '4px'
       }}>
-        <span>⏳ Loading table...</span>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1rem',
+          color: 'white'
+        }}>
+          <div style={{
+            width: '40px',
+            height: '40px',
+            border: '4px solid rgba(255, 255, 255, 0.2)',
+            borderTop: '4px solid #667eea',
+            borderRight: '4px solid #764ba2',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))'
+          }}></div>
+          <span style={{ fontSize: '1rem', opacity: 0.9, textShadow: '0 1px 3px rgba(0, 0, 0, 0.3)' }}>
+            Loading data table...
+          </span>
+        </div>
       </div>
     }>
       <AgGridTable

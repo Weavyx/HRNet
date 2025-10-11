@@ -47,15 +47,15 @@ export const US_STATES = Object.freeze([
   { value: "VT", label: "Vermont" },
   { value: "VA", label: "Virginia" },
   { value: "WA", label: "Washington" },
-  Object.freeze({ value: "WV", label: "West Virginia" }),
-  Object.freeze({ value: "WI", label: "Wisconsin" }),
-  Object.freeze({ value: "WY", label: "Wyoming" }),
+  { value: "WV", label: "West Virginia" },
+  { value: "WI", label: "Wisconsin" },
+  { value: "WY", label: "Wyoming" },
 ]);
 
 export const DEPARTMENTS = Object.freeze([
-  Object.freeze({ value: "Sales", label: "Sales" }),
-  Object.freeze({ value: "Marketing", label: "Marketing" }),
-  Object.freeze({ value: "Engineering", label: "Engineering" }),
-  Object.freeze({ value: "Human Resources", label: "Human Resources" }),
-  Object.freeze({ value: "Legal", label: "Legal" }),
+  { value: "Sales", label: "Sales" },
+  { value: "Marketing", label: "Marketing" },
+  { value: "Engineering", label: "Engineering" },
+  { value: "Human Resources", label: "Human Resources" },
+  { value: "Legal", label: "Legal" },
 ]);

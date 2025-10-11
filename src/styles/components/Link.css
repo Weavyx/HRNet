@@ -79,8 +79,6 @@
 @media (max-width: 479px) {
   .link {
     min-height: 44px; /* Touch-friendly minimum */
-    display: flex;
-    align-items: center;
   }
 
   .link--secondary {

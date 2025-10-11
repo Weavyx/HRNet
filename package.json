@@ -1,14 +1,16 @@
 {
   "name": "hrnet",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "start": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean": "powershell -ExecutionPolicy Bypass -File ./scripts/clean-build.ps1",
+    "build:clean": "npm run clean && npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",

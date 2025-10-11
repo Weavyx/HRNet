@@ -99,7 +99,7 @@ function SuccessModal({
 
         <div className="success-message__actions">
           <Link
-            to="/employee-list"
+            to="/employees"
             variant="primary"
             size="medium"
             onClick={() => {

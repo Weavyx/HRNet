@@ -28,29 +28,29 @@ function CreateEmployee() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [createdEmployeeData, setCreatedEmployeeData] = useState(null);
 
-  // Fonctions de validation pour chaque champ
+  // Validation functions for each field
   const validateFirstName = (value) => {
     if (!value || value.trim().length === 0) {
-      return 'Le prénom est requis';
+      return 'First name is required';
     }
     if (value.trim().length < 2) {
-      return 'Le prénom doit contenir au moins 2 caractères';
+      return 'First name must contain at least 2 characters';
     }
     if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-      return 'Le prénom ne doit contenir que des lettres, espaces, traits d\'union et apostrophes';
+      return 'First name must contain only letters, spaces, hyphens and apostrophes';
     }
     return '';
   };
 
   const validateLastName = (value) => {
     if (!value || value.trim().length === 0) {
-      return 'Le nom est requis';
+      return 'Last name is required';
     }
     if (value.trim().length < 2) {
-      return 'Le nom doit contenir au moins 2 caractères';
+      return 'Last name must contain at least 2 characters';
     }
     if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-      return 'Le nom ne doit contenir que des lettres, espaces, traits d\'union et apostrophes';
+      return 'Last name must contain only letters, spaces, hyphens and apostrophes';
     }
     return '';
   };
@@ -69,13 +69,13 @@ function CreateEmployee() {
     }
 
     if (birthDate > today) {
-      return 'La date de naissance ne peut pas être dans le futur';
+      return 'Date of birth cannot be in the future';
     }
     if (age < 16) {
-      return 'L\'employé doit avoir au moins 16 ans';
+      return 'Employee must be at least 16 years old';
     }
     if (age > 120) {
-      return 'Veuillez vérifier la date de naissance';
+      return 'Please verify the date of birth';
     }
     return '';
   };
@@ -90,7 +90,7 @@ function CreateEmployee() {
     oneYearAgo.setFullYear(today.getFullYear() - 1);
 
     if (startDate < oneYearAgo) {
-      return 'La date de début ne peut pas être antérieure à un an';
+      return 'Start date cannot be more than one year ago';
     }
     return '';
   };
@@ -100,10 +100,10 @@ function CreateEmployee() {
       return ''; // Optionnel
     }
     if (value.trim().length < 5) {
-      return 'L\'adresse doit contenir au moins 5 caractères';
+      return 'Street address must contain at least 5 characters';
     }
     if (!/^[a-zA-Z0-9À-ÿ\s,.-]+$/.test(value)) {
-      return 'L\'adresse contient des caractères non valides';
+      return 'Street address contains invalid characters';
     }
     return '';
   };
@@ -113,10 +113,10 @@ function CreateEmployee() {
       return ''; // Optionnel
     }
     if (value.trim().length < 2) {
-      return 'La ville doit contenir au moins 2 caractères';
+      return 'City must contain at least 2 characters';
     }
     if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-      return 'La ville ne doit contenir que des lettres, espaces, traits d\'union et apostrophes';
+      return 'City must contain only letters, spaces, hyphens and apostrophes';
     }
     return '';
   };
@@ -127,7 +127,7 @@ function CreateEmployee() {
     }
     const validStates = US_STATES.map(state => state.value);
     if (!validStates.includes(value)) {
-      return 'Veuillez sélectionner un état valide';
+      return 'Please select a valid state';
     }
     return '';
   };
@@ -137,23 +137,23 @@ function CreateEmployee() {
       return ''; // Optionnel
     }
     if (!/^\d{5}(-\d{4})?$/.test(value)) {
-      return 'Le code postal doit être au format 12345 ou 12345-6789';
+      return 'Zip code must be in format 12345 or 12345-6789';
     }
     return '';
   };
 
   const validateDepartment = (value) => {
     if (!value || value.trim().length === 0) {
-      return 'Le département est requis';
+      return 'Department is required';
     }
     const validDepartments = DEPARTMENTS.map(dept => dept.value);
     if (!validDepartments.includes(value)) {
-      return 'Veuillez sélectionner un département valide';
+      return 'Please select a valid department';
     }
     return '';
   };
 
-  // Validation de tous les champs
+  // Validation for all fields
   const validateAllFields = (data) => {
     const newErrors = {};
 
@@ -167,7 +167,7 @@ function CreateEmployee() {
     newErrors.zipCode = validateZipCode(data.zipCode);
     newErrors.department = validateDepartment(data.department);
 
-    // Supprime les erreurs vides
+    // Remove empty errors
     Object.keys(newErrors).forEach(key => {
       if (!newErrors[key]) {
         delete newErrors[key];
@@ -184,10 +184,10 @@ function CreateEmployee() {
       [name]: value
     }));
 
-    // Marquer le champ comme "touché" et valider
+    // Mark field as "touched" and validate
     setTouched(prev => ({ ...prev, [name]: true }));
 
-    // Valider le champ spécifique
+    // Validate specific field
     let error = '';
     switch (name) {
       case 'firstName':
@@ -227,7 +227,7 @@ function CreateEmployee() {
       [fieldName]: date
     }));
 
-    // Marquer le champ comme "touché" et valider
+    // Mark field as "touched" and validate
     setTouched(prev => ({ ...prev, [fieldName]: true }));
 
     let error = '';
@@ -246,17 +246,17 @@ function CreateEmployee() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Marquer tous les champs comme "touchés"
+    // Mark all fields as "touched"
     const allFields = ['firstName', 'lastName', 'dateOfBirth', 'startDate', 'street', 'city', 'state', 'zipCode', 'department'];
     setTouched(allFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
 
-    // Valider tous les champs
+    // Validate all fields
     const validationErrors = validateAllFields(formData);
     setErrors(validationErrors);
 
-    // Vérifier s'il y a des erreurs
+    // Check for validation errors
     if (Object.keys(validationErrors).length > 0) {
-      alert('Veuillez corriger les erreurs dans le formulaire avant de soumettre.');
+      alert('Please correct the errors in the form before submitting.');
       return;
     }
 
@@ -267,13 +267,13 @@ function CreateEmployee() {
       startDate: formatDateToUS(formData.startDate)
     };
 
-    // Créer l'employé via Redux
+    // Create employee via Redux
     createEmployee(employeeData);
 
-    // Conserver les données pour affichage dans la modale
+    // Store data for display in modal
     setCreatedEmployeeData(employeeData);
 
-    // Reset du formulaire
+    // Reset form
     setFormData({
       firstName: '',
       lastName: '',
@@ -288,7 +288,7 @@ function CreateEmployee() {
     setErrors({});
     setTouched({});
 
-    // Afficher la modale de succès
+    // Show success modal
     setShowSuccessModal(true);
   };
 
@@ -298,13 +298,13 @@ function CreateEmployee() {
   };
 
   const handleCreateAnother = () => {
-    // Le formulaire est déjà réinitialisé, pas besoin de refaire
+    // Form is already reset, no need to do it again
     setShowSuccessModal(false);
     setCreatedEmployeeData(null);
   };
 
   const handleViewEmployees = () => {
-    // La navigation se fera via le Link dans SuccessModal
+    // Navigation will be handled via Link in SuccessModal
     setShowSuccessModal(false);
     setCreatedEmployeeData(null);
   };
@@ -312,7 +312,7 @@ function CreateEmployee() {
   return (
     <>
       <div className="create-employee">
-        <Link to="/employee-list" variant="secondary" size="medium">
+        <Link to="/employees" variant="secondary" size="medium">
           View Current Employees
         </Link>
         <h2 className="create-employee__title">Create Employee</h2>
@@ -482,7 +482,7 @@ function CreateEmployee() {
         </form>
       </div>
 
-      {/* Modale de succès */}
+      {/* Success Modal */}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={handleCloseModal}
