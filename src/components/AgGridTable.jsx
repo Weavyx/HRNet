@@ -1,15 +1,41 @@
 import { AgGridReact } from 'ag-grid-react';
-import { ModuleRegistry, AllCommunityModule, themeQuartz } from 'ag-grid-community';
+import { AllCommunityModule, ModuleRegistry, themeQuartz } from 'ag-grid-community';
 import { useMemo, useRef } from 'react';
 import '../styles/components/AgGridTable.css';
 
-// Enregistrement des modules AG Grid Community (une seule fois)
+/**
+ * Enregistre les modules AG Grid Community.
+ * Cette opération est effectuée une seule fois au niveau du module.
+ * @see {@link https://ag-grid.com/javascript-data-grid/modules/}
+ */
 ModuleRegistry.registerModules([AllCommunityModule]);
 
+/**
+ * Composant de tableau de données utilisant AG Grid React.
+ *
+ * @component
+ * @param {Object} props - Les propriétés du composant
+ * @param {Array<Object>} props.employees - Liste des employés à afficher dans le tableau
+ * @param {string} [props.quickFilterText] - Texte de filtrage rapide pour rechercher dans toutes les colonnes
+ * @param {Function} [props.onGridReady] - Callback appelé lorsque la grille est prête
+ * @returns {React.ReactElement} Composant de tableau AG Grid configuré
+ *
+ * @example
+ * <AgGridTable
+ *   employees={employeesList}
+ *   quickFilterText={searchTerm}
+ *   onGridReady={(params) => console.log('Grid ready', params)}
+ * />
+ */
 const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
   const gridRef = useRef();
 
-  // Configuration du thème AG Grid v34 avec la nouvelle API - noms de parts corrects
+  /**
+   * Configuration du thème personnalisé pour AG Grid v34.
+   * Utilise la nouvelle API de thématisation avec des noms de parts corrects.
+   * @type {import('ag-grid-community').Theme}
+   * @see {@link https://ag-grid.com/javascript-data-grid/themes/}
+   */
   const myTheme = useMemo(() => themeQuartz
     .withParams({
       // Couleurs de base
@@ -34,7 +60,11 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       wrapperBorderColor: '#e2e8f0',
     }), []);
 
-  // Configuration moderne des colonnes avec filtres natifs AG Grid
+  /**
+   * Définitions des colonnes avec filtres natifs AG Grid.
+   * Configure les colonnes avec leurs propriétés de tri, filtrage et affichage.
+   * @type {import('ag-grid-community').ColDef[]}
+   */
   const columnDefs = useMemo(() => [
     {
       field: 'firstName',
@@ -48,7 +78,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 100,
-      hide: false
+      hide: false,
     },
     {
       field: 'lastName',
@@ -62,7 +92,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 100,
-      hide: false
+      hide: false,
     },
     {
       field: 'startDate',
@@ -77,7 +107,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 110,
-      hide: window.innerWidth < 768
+      hide: window.innerWidth < 768,
     },
     {
       field: 'department',
@@ -91,7 +121,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 120,
-      hide: false
+      hide: false,
     },
     {
       field: 'dateOfBirth',
@@ -106,7 +136,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 120,
-      hide: window.innerWidth < 1024
+      hide: window.innerWidth < 1024,
     },
     {
       field: 'street',
@@ -120,7 +150,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 120,
-      hide: false // Toujours visible
+      hide: false, // Toujours visible
     },
     {
       field: 'city',
@@ -134,7 +164,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 100,
-      hide: window.innerWidth < 992
+      hide: window.innerWidth < 992,
     },
     {
       field: 'state',
@@ -148,7 +178,7 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 80,
-      hide: false // Toujours visible
+      hide: false, // Toujours visible
     },
     {
       field: 'zipCode',
@@ -162,25 +192,37 @@ const AgGridTable = ({ employees, quickFilterText, onGridReady }) => {
       sortable: true,
       flex: 1,
       minWidth: 100,
-      hide: false // Toujours visible
-    }
+      hide: false, // Toujours visible
+    },
   ], []);
 
-  // Configuration par défaut d'AG Grid - Mémorisée
-  const defaultColDef = useMemo(() => ({
+  /**
+   * Configuration par défaut pour toutes les colonnes.
+   * Définit les comportements communs comme le redimensionnement, le tri et le filtrage.
+   * @type {import('ag-grid-community').ColDef}
+   */
+  const defaultColDef = useMemo(() => (
+    {
     resizable: true,
     sortable: true,
     filter: true,
     floatingFilter: false, // Désactiver les floating filters pour un affichage compact
     minWidth: 100,
-  }), []);
+  }
+), []);
 
-  // Configuration adaptative de la pagination selon la taille d'écran
+  /**
+   * Configuration adaptative de la pagination basée sur la taille d'écran.
+   * Optimise l'expérience utilisateur sur mobile en réduisant le nombre d'éléments par page.
+   * @type {Object}
+   * @property {number} pageSize - Nombre d'éléments par page
+   * @property {number[]} pageSizeSelector - Options de taille de page disponibles
+   */
   const paginationConfig = useMemo(() => {
     const isMobile = window.innerWidth < 480;
     return {
-      pageSize: isMobile ? 5 : 10, // Moins d'éléments par page sur mobile
-      pageSizeSelector: isMobile ? [5, 10, 20] : [5, 10, 20, 50, 100] // Options simplifiées sur mobile
+      pageSize: isMobile ? 5 : 10, /** Moins d'éléments par page sur mobile */
+      pageSizeSelector: isMobile ? [5, 10, 20] : [5, 10, 20, 50, 100], /** Options simplifiées sur mobile */
     };
   }, []);
 

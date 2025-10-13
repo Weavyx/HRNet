@@ -1,4 +1,13 @@
-// Freeze pour optimisation - empêche les mutations accidentelles
+/**
+ * @fileoverview Constantes pour les options de formulaire.
+ * Contient les listes d'états américains et de départements utilisées dans les formulaires.
+ */
+
+/**
+ * Liste des états américains avec codes et libellés.
+ * Gelée pour optimiser les performances et empêcher les mutations accidentelles.
+ * @type {ReadonlyArray<{value: string, label: string}>}
+ */
 export const US_STATES = Object.freeze([
   Object.freeze({ value: "AL", label: "Alabama" }),
   { value: "AK", label: "Alaska" },
@@ -52,6 +61,11 @@ export const US_STATES = Object.freeze([
   { value: "WY", label: "Wyoming" },
 ]);
 
+/**
+ * Liste des départements disponibles dans l'organisation.
+ * Gelée pour optimiser les performances et empêcher les mutations accidentelles.
+ * @type {ReadonlyArray<{value: string, label: string}>}
+ */
 export const DEPARTMENTS = Object.freeze([
   { value: "Sales", label: "Sales" },
   { value: "Marketing", label: "Marketing" },

@@ -1,5 +1,19 @@
+/**
+ * @fileoverview Composant d'en-tête principal de l'application.
+ */
+
 import "../styles/components/Header.css";
 
+/**
+ * Composant d'en-tête avec navigation principale.
+ * Affiche le titre de l'application et les liens de navigation.
+ *
+ * @component
+ * @returns {React.ReactElement} En-tête avec navigation
+ *
+ * @example
+ * <Header />
+ */
 function Header() {
     return (
         <header className="header">

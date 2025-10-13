@@ -3,14 +3,48 @@ import Button from './Button';
 import Link from './Link';
 import '../styles/components/SuccessModal.css';
 
+/**
+ * Composant modal de succès pour confirmer la création d'un employé.
+ * Affiche les détails de l'employé créé avec des options pour naviguer ou créer un autre employé.
+ *
+ * @component
+ * @param {Object} props - Les propriétés du composant
+ * @param {boolean} props.isOpen - Indique si la modal est ouverte
+ * @param {Function} props.onClose - Fonction callback pour fermer la modal
+ * @param {Object} [props.employeeData] - Les données de l'employé créé
+ * @param {string} props.employeeData.firstName - Prénom de l'employé
+ * @param {string} props.employeeData.lastName - Nom de famille de l'employé
+ * @param {string} props.employeeData.dateOfBirth - Date de naissance
+ * @param {string} props.employeeData.startDate - Date de début
+ * @param {string} props.employeeData.department - Département
+ * @param {string} props.employeeData.street - Adresse (rue)
+ * @param {string} props.employeeData.city - Ville
+ * @param {string} props.employeeData.state - État/Région
+ * @param {string} props.employeeData.zipCode - Code postal
+ * @param {Function} [props.onViewEmployees] - Callback pour voir la liste des employés
+ * @param {Function} [props.onCreateAnother] - Callback pour créer un autre employé
+ * @returns {React.ReactElement|null} Le composant modal ou null si fermé
+ *
+ * @example
+ * <SuccessModal
+ *   isOpen={showModal}
+ *   onClose={() => setShowModal(false)}
+ *   employeeData={newEmployee}
+ *   onViewEmployees={() => navigate('/employees')}
+ *   onCreateAnother={() => resetForm()}
+ * />
+ */
 function SuccessModal({
   isOpen,
   onClose,
   employeeData,
   onViewEmployees,
-  onCreateAnother
+  onCreateAnother,
 }) {
-  // Gérer la fermeture avec la touche Échap
+  /**
+   * Gère la fermeture de la modal avec la touche Échap.
+   * Ajoute et nettoie l'écouteur d'événement clavier.
+   */
   useEffect(() => {
     if (!isOpen) return;
 
@@ -24,7 +58,10 @@ function SuccessModal({
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, onClose]);
 
-  // Gérer le scroll du body
+  /**
+   * Gère le défilement du body lors de l'ouverture/fermeture de la modal.
+   * Désactive le scroll pour éviter le défilement en arrière-plan.
+   */
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -37,18 +74,36 @@ function SuccessModal({
     };
   }, [isOpen]);
 
-  // Ne pas rendre si la modale n'est pas ouverte ou sans données
+  /** Ne rendre que si la modale est ouverte et qu'il y a des données employé */
   if (!isOpen || !employeeData) return null;
 
+  /**
+   * Formate une date pour l'affichage.
+   * @param {string} dateString - La date à formater
+   * @returns {string} La date formatée ou 'Not provided'
+   */
   const formatDate = (dateString) => {
     if (!dateString) return 'Not provided';
     return dateString;
   };
 
+  /**
+   * Formate le département pour l'affichage.
+   * @param {string} dept - Le département à formater
+   * @returns {string} Le département formaté ou 'Not provided'
+   */
   const formatDepartment = (dept) => {
     return dept || 'Not provided';
   };
 
+  /**
+   * Formate l'adresse complète à partir de ses composants.
+   * @param {string} street - Rue
+   * @param {string} city - Ville
+   * @param {string} state - État/Région
+   * @param {string} zipCode - Code postal
+   * @returns {string} L'adresse complète formatée ou 'Not provided'
+   */
   const formatAddress = (street, city, state, zipCode) => {
     const parts = [];
     if (street) parts.push(street);
@@ -137,7 +192,7 @@ function SuccessModal({
                 employeeData.street,
                 employeeData.city,
                 employeeData.state,
-                employeeData.zipCode
+                employeeData.zipCode,
               )}
             </span>
           </div>

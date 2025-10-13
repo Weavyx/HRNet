@@ -1,30 +1,48 @@
+/**
+ * @fileoverview Page de consultation des employés avec tableau et recherche.
+ */
+
 import '../styles/pages/Employees.css';
 import { useEmployees } from '../hooks/useEmployees';
 import Link from '../components/Link';
 import ConditionalTable from '../components/ConditionalTable';
 import { useState, useCallback } from 'react';
 
+/**
+ * Page d'affichage et de gestion des employés.
+ * Contient un tableau de données avec fonctionnalité de recherche rapide.
+ *
+ * @component
+ * @returns {React.ReactElement} Page avec tableau des employés et recherche
+ *
+ * @example
+ * // Utilisé dans le routeur
+ * <Route path="/employees" element={<Employees />} />
+ */
 function Employees() {
     const { employees } = useEmployees();
     const [quickFilterText, setQuickFilterText] = useState('');
 
-    /*
-     * Loading Strategy Explanation:
+    /**
+     * @description Stratégie de chargement à plusieurs niveaux :
      *
-     * 1. Router Level (Suspense):
-     *    - Shows PageLoader while Employees component loads (lazy loading)
+     * 1. **Niveau Router (Suspense)** :
+     *    - Affiche PageLoader pendant le chargement du composant Employees (lazy loading)
      *    - Message: "Loading employees..."
      *
-     * 2. Component Level (ConditionalTable):
-     *    - No employees (length === 0): Show empty state immediately
-     *    - Has employees: Show table loader while AG Grid loads (lazy loading)
+     * 2. **Niveau Composant (ConditionalTable)** :
+     *    - Aucun employé (length === 0) : Affiche l'état vide immédiatement
+     *    - Employés présents : Affiche le loader de table pendant le chargement d'AG Grid (lazy loading)
      *    - Message: "Loading table..."
      *
-     * This creates a smooth loading experience:
-     * Page Load → Employees → (if data exists) → AG Grid Table
+     * Cette approche crée une expérience de chargement fluide :
+     * Chargement Page → Employees → (si données) → AG Grid Table
      */
 
-    // Optimisation : Mémorisation du callback pour éviter les re-renders
+    /**
+     * Gestionnaire de préparation de la grille AG Grid.
+     * Optimisé avec useCallback pour éviter les re-rendus inutiles.
+     */
     const handleGridReady = useCallback(() => {
         // Grid is ready - callback can be used for additional setup if needed
     }, []);

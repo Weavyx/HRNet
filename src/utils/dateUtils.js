@@ -1,12 +1,12 @@
 /**
- * Date utilities for consistent date formatting across the application
- * All dates should be formatted as MM/DD/YYYY (US format)
+ * Utilitaires de date pour un formatage cohérent à travers l'application
+ * Toutes les dates doivent être formatées en MM/DD/YYYY (format US)
  */
 
 /**
- * Format a Date object to MM/DD/YYYY string
- * @param {Date} date - The date object to format
- * @returns {string} - Formatted date string (MM/DD/YYYY) or empty string if invalid
+ * Formate un objet Date en chaîne MM/DD/YYYY
+ * @param {Date} date - L'objet date à formater
+ * @returns {string} Chaîne de date formatée (MM/DD/YYYY) ou chaîne vide si invalide
  */
 export const formatDateToUS = (date) => {
   if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
