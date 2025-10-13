@@ -10,7 +10,9 @@ import Link from '../components/Link';
 import Button from '../components/Button';
 import CustomDatePicker from '../components/DatePicker';
 import Select from '../components/Select';
-import SuccessModal from '../components/SuccessModal';
+import SuccessModal from '@weavyx/react-success-modal';
+// Import du CSS de la librairie
+import '@weavyx/react-success-modal/dist/index.css';
 import { US_STATES, DEPARTMENTS } from '../constants/formOptions';
 import { formatDateToUS } from '../utils/dateUtils';
 
@@ -68,23 +70,23 @@ function CreateEmployee() {
    * Utilise le handleSubmit du hook avec logique métier spécifique.
    */
   const onSubmit = handleSubmit((formValues) => {
-    // Format dates for storage (MM/DD/YYYY)
+    // Formater les dates pour le stockage (MM/DD/YYYY)
     const employeeData = {
       ...formValues,
       dateOfBirth: formatDateToUS(formValues.dateOfBirth),
       startDate: formatDateToUS(formValues.startDate),
     };
 
-    // Create employee via Redux
+    // Créer l'employé via Redux
     createEmployee(employeeData);
 
-    // Store data for display in modal
+    // Stocker les données pour affichage dans la modal
     setCreatedEmployeeData(employeeData);
 
-    // Reset form
+    // Réinitialiser le formulaire
     reset();
 
-    // Show success modal
+    // Afficher la modal de succès
     setShowSuccessModal(true);
   });
 
@@ -94,15 +96,15 @@ function CreateEmployee() {
   };
 
   const handleCreateAnother = () => {
-    // Form is already reset, no need to do it again
+    // Le formulaire est déjà réinitialisé, pas besoin de le refaire
     setShowSuccessModal(false);
     setCreatedEmployeeData(null);
   };
 
   const handleViewEmployees = () => {
-    // Navigation will be handled via Link in SuccessModal
     setShowSuccessModal(false);
     setCreatedEmployeeData(null);
+    // Navigation sera gérée par le Link existant sur la page
   };
 
   return (
@@ -278,7 +280,7 @@ function CreateEmployee() {
         </form>
       </div>
 
-      {/* Success Modal */}
+      {/* Modal de succès */}
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={handleCloseModal}

@@ -44,7 +44,7 @@ function Employees() {
      * Optimisé avec useCallback pour éviter les re-rendus inutiles.
      */
     const handleGridReady = useCallback(() => {
-        // Grid is ready - callback can be used for additional setup if needed
+        // La grille est prête - ce callback peut être utilisé pour une configuration supplémentaire si nécessaire
     }, []);
 
     const handleQuickFilterChange = useCallback((e) => {
