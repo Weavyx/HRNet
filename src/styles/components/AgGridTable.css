@@ -1,0 +1,252 @@
+/* AgGridTable Component Styles */
+
+.employees__table {
+  height: 400px;
+  width: 100%;
+}
+
+/* Styles optimisés pour un en-tête compact sans floating filters */
+.employees__table .ag-header {
+  border-bottom: 2px solid #667eea;
+}
+
+/* Hauteur optimisée pour les en-têtes principaux */
+.employees__table .ag-header-row {
+  height: 48px !important;
+  min-height: 48px !important;
+}
+
+/* Styles pour les en-têtes de colonnes */
+.employees__table .ag-header-cell {
+  border-right: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+/* Style des icônes de filtre dans les en-têtes */
+.employees__table .ag-header-icon {
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+
+.employees__table .ag-header-cell:hover .ag-header-icon {
+  color: #667eea;
+}
+
+/* Styles pour les filtres et dropdowns */
+.ag-filter-wrapper {
+  overflow: visible !important;
+  z-index: 1000;
+}
+
+.ag-menu {
+  overflow: visible !important;
+  z-index: 1000;
+}
+
+.ag-popup {
+  overflow: visible !important;
+  z-index: 1000;
+}
+
+/* Styles pour les filtres natifs AG Grid */
+.ag-filter-body-wrapper {
+  overflow: visible !important;
+}
+
+.ag-filter-body {
+  overflow: visible !important;
+}
+
+/* Améliorer l'affichage des dropdowns de filtres */
+.ag-list-selection {
+  z-index: 9999 !important;
+}
+
+.ag-picker-field-wrapper {
+  z-index: 9999 !important;
+}
+
+/* Ajustements responsive pour les en-têtes */
+@media (max-width: 768px) {
+  .employees__table .ag-header-row {
+    height: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .employees__table .ag-header-cell {
+    padding: 0 8px;
+    font-size: 13px;
+  }
+}
+
+/* Ajustements responsive pour le paging panel sur très petits écrans */
+@media (max-width: 494px) {
+  /* Conteneur principal du paging */
+  .employees__table .ag-paging-panel {
+    padding: 8px 4px !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Force l'alignement vertical sur tous les enfants directs du panel */
+  .employees__table .ag-paging-panel > * {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Informations de pagination (ex: "1 to 10 of 25") */
+  .employees__table .ag-paging-row-summary-panel {
+    order: 2;
+    width: 100% !important;
+    text-align: center !important;
+    font-size: 12px !important;
+    margin: 4px 0 !important;
+  }
+
+  /* Contrôles de pagination (boutons précédent/suivant et sélecteur de page) */
+  .employees__table .ag-paging-page-summary-panel {
+    order: 1;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 4px !important;
+  }
+
+  /* Correction spécifique pour le centrage vertical des éléments de pagination */
+  .employees__table .ag-paging-page-summary-panel > * {
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* Boutons de navigation */
+  .employees__table .ag-paging-button {
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 4px !important;
+    font-size: 12px !important;
+    margin: 0 2px !important;
+    cursor: pointer !important;
+  }
+
+  /* Cursor par défaut pour les boutons désactivés */
+  .employees__table .ag-paging-button[disabled] {
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+  }
+
+  /* Sélecteur de taille de page */
+  .employees__table .ag-paging-page-size {
+    order: 3;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 8px !important;
+  }
+
+  .employees__table .ag-paging-page-size .ag-list-selection {
+    min-width: 80px !important;
+    font-size: 12px !important;
+  }
+
+  /* Labels pour le sélecteur de taille */
+  .employees__table .ag-paging-page-size-selector-label {
+    font-size: 12px !important;
+    margin: 0 4px !important;
+  }
+
+  /* Ajustement du conteneur de numérotation des pages */
+  .employees__table .ag-paging-number {
+    font-size: 12px !important;
+    padding: 4px 6px !important;
+    min-width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+  }
+
+  /* Page courante - pas cliquable */
+  .employees__table .ag-paging-number.ag-selected {
+    cursor: default !important;
+  }
+
+  /* Correction pour tous les éléments enfants de pagination */
+  .employees__table .ag-paging-panel .ag-paging-page-summary-panel .ag-icon,
+  .employees__table .ag-paging-panel .ag-paging-page-summary-panel span {
+    display: flex !important;
+    align-items: center !important;
+    line-height: 1 !important;
+  }
+
+  /* Masquer certains éléments si nécessaire sur très petits écrans */
+  @media (max-width: 360px) {
+    .employees__table .ag-paging-row-summary-panel {
+      display: none !important;
+    }
+
+    .employees__table .ag-paging-page-size-selector-label {
+      display: none !important;
+    }
+
+    /* Réduire encore plus l'espacement sur les très petits écrans */
+    .employees__table .ag-paging-panel {
+      padding: 4px 2px !important;
+      gap: 4px !important;
+    }
+
+    .employees__table .ag-paging-button {
+      min-width: 28px !important;
+      height: 28px !important;
+      font-size: 11px !important;
+      cursor: pointer !important;
+    }
+
+    .employees__table .ag-paging-button[disabled] {
+      cursor: not-allowed !important;
+    }
+
+    .employees__table .ag-paging-number {
+      font-size: 11px !important;
+      padding: 2px 4px !important;
+      min-width: 24px !important;
+      height: 24px !important;
+      cursor: pointer !important;
+    }
+
+    .employees__table .ag-paging-number.ag-selected {
+      cursor: default !important;
+    }
+  }
+}
+
+/* Amélioration globale de la responsivité du tableau */
+@media (max-width: 494px) {
+  .employees__table {
+    font-size: 12px !important;
+  }
+
+  /* Ajustement de la hauteur du tableau sur mobile */
+  .employees__table {
+    height: 350px !important;
+  }
+
+  /* Amélioration de l'espacement des cellules */
+  .employees__table .ag-cell {
+    padding: 4px 6px !important;
+    font-size: 12px !important;
+  }
+
+  /* Optimisation des en-têtes sur mobile */
+  .employees__table .ag-header-cell {
+    padding: 0 6px !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+  }
+}

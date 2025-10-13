@@ -1,9 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
   addEmployee,
-  removeEmployee,
-  updateEmployee,
-  clearEmployees,
   selectAllEmployees,
   selectEmployeesCount,
 } from "../features/employees/employeesSlice";
@@ -18,25 +15,9 @@ export const useEmployees = () => {
     dispatch(addEmployee(employeeData));
   };
 
-  const deleteEmployee = (id) => {
-    dispatch(removeEmployee(id));
-  };
-
-  const editEmployee = (id, updates) => {
-    dispatch(updateEmployee({ id, ...updates }));
-  };
-
-  const clearAllEmployees = () => {
-    dispatch(clearEmployees());
-  };
-
   return {
     employees,
     employeesCount,
     createEmployee,
-    deleteEmployee,
-    editEmployee,
-    clearAllEmployees,
-    getEmployeeById: (id) => employees.find((emp) => emp.id === id),
   };
 };

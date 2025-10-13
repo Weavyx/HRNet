@@ -4,28 +4,8 @@
   justify-content: center;
   align-items: center;
   padding: var(--spacing-2xl);
-  min-height: 200px;
-  background: transparent;
-}
-
-.page-loader--small {
-  min-height: 100px;
-  padding: var(--spacing-lg);
-}
-
-.page-loader--large {
   min-height: 60vh;
-  padding: var(--spacing-2xl);
-}
-
-/* Variante pour fond clair (ex: dans des modales) */
-.page-loader--light-bg .page-loader__message {
-  color: var(--text-primary);
-  text-shadow: none;
-}
-
-.page-loader--light-bg .page-loader__spinner {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  background: transparent;
 }
 
 .page-loader__container {
@@ -37,19 +17,9 @@
 
 .page-loader__spinner {
   position: relative;
-  width: 60px;
-  height: 60px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-}
-
-.page-loader--small .page-loader__spinner {
-  width: 40px;
-  height: 40px;
-}
-
-.page-loader--large .page-loader__spinner {
   width: 80px;
   height: 80px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .page-loader__spinner-inner {
@@ -64,20 +34,12 @@
 
 .page-loader__message {
   color: var(--text-white);
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   font-weight: 600;
   text-align: center;
   opacity: 0.9;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   animation: page-loader-fade 2s ease-in-out infinite;
-}
-
-.page-loader--small .page-loader__message {
-  font-size: var(--font-size-base);
-}
-
-.page-loader--large .page-loader__message {
-  font-size: var(--font-size-xl);
 }
 
 /* Animations */

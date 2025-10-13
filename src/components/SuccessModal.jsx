@@ -1,6 +1,7 @@
-import Modal from './Modal';
+import { useEffect } from 'react';
 import Button from './Button';
 import Link from './Link';
+import '../styles/components/SuccessModal.css';
 
 function SuccessModal({
   isOpen,
@@ -9,7 +10,35 @@ function SuccessModal({
   onViewEmployees,
   onCreateAnother
 }) {
-  if (!employeeData) return null;
+  // Gérer la fermeture avec la touche Échap
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isOpen, onClose]);
+
+  // Gérer le scroll du body
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  // Ne pas rendre si la modale n'est pas ouverte ou sans données
+  if (!isOpen || !employeeData) return null;
 
   const formatDate = (dateString) => {
     if (!dateString) return 'Not provided';
@@ -30,14 +59,31 @@ function SuccessModal({
     return parts.length > 0 ? parts.join(', ') : 'Not provided';
   };
 
+  const handleOverlayClick = (event) => {
+    if (event.target === event.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <Modal
-      isOpen={isOpen}
-      onClose={onClose}
-      title="Employee created successfully!"
-      className="modal--success"
-    >
-      <div className="success-message">
+    <div className="success-modal-overlay" onClick={handleOverlayClick}>
+      <div className="success-modal" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+        <div className="success-modal__header">
+          <h2 id="success-modal-title" className="success-modal__title">
+            Employee created successfully!
+          </h2>
+          <button
+            type="button"
+            className="success-modal__close-button"
+            onClick={onClose}
+            aria-label="Fermer la modale"
+          >
+            <span className="success-modal__close-icon">×</span>
+          </button>
+        </div>
+
+        <div className="success-modal__content">
+          <div className="success-message">
         <div className="success-message__icon">
           ✓
         </div>
@@ -52,41 +98,41 @@ function SuccessModal({
         </p>
 
         <div className="success-message__employee-info">
-          <div className="employee-info__row">
-            <span className="employee-info__label">Full name:</span>
-            <span className="employee-info__value">
+          <div className="success-message__info-row">
+            <span className="success-message__info-label">Full name:</span>
+            <span className="success-message__info-value">
               {employeeData.firstName} {employeeData.lastName}
             </span>
           </div>
 
-          <div className="employee-info__row">
-            <span className="employee-info__label">Department:</span>
-            <span className="employee-info__value">
+          <div className="success-message__info-row">
+            <span className="success-message__info-label">Department:</span>
+            <span className="success-message__info-value">
               {formatDepartment(employeeData.department)}
             </span>
           </div>
 
           {employeeData.dateOfBirth && (
-            <div className="employee-info__row">
-              <span className="employee-info__label">Date of birth:</span>
-              <span className="employee-info__value">
+            <div className="success-message__info-row">
+              <span className="success-message__info-label">Date of birth:</span>
+              <span className="success-message__info-value">
                 {formatDate(employeeData.dateOfBirth)}
               </span>
             </div>
           )}
 
           {employeeData.startDate && (
-            <div className="employee-info__row">
-              <span className="employee-info__label">Start date:</span>
-              <span className="employee-info__value">
+            <div className="success-message__info-row">
+              <span className="success-message__info-label">Start date:</span>
+              <span className="success-message__info-value">
                 {formatDate(employeeData.startDate)}
               </span>
             </div>
           )}
 
-          <div className="employee-info__row">
-            <span className="employee-info__label">Address:</span>
-            <span className="employee-info__value">
+          <div className="success-message__info-row">
+            <span className="success-message__info-label">Address:</span>
+            <span className="success-message__info-value">
               {formatAddress(
                 employeeData.street,
                 employeeData.city,
@@ -121,8 +167,10 @@ function SuccessModal({
             Create another employee
           </Button>
         </div>
+          </div>
+        </div>
       </div>
-    </Modal>
+    </div>
   );
 }
 

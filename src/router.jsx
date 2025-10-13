@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<PageLoader size="large" message="Loading create employee page..." />}>
+          <Suspense fallback={<PageLoader message="Loading create employee page..." />}>
             <CreateEmployee />
           </Suspense>
         )
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
       {
         path: "employees",
         element: (
-          <Suspense fallback={<PageLoader size="large" message="Loading employees..." />}>
+          <Suspense fallback={<PageLoader message="Loading employees..." />}>
             <Employees />
           </Suspense>
         )

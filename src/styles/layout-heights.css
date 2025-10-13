@@ -1,0 +1,83 @@
+/* Variables CSS pour les hauteurs dynamiques Header/Footer */
+:root {
+  /* Hauteurs calculées du Header par résolution */
+  /* Mobile portrait (max-width: 479px) :
+     - Header flex-direction: column, padding: 0.5rem 1rem, gap: 1rem
+     - Title: clamp(1.5rem, 4vw, 1.5rem) ≈ 1.5rem
+     - Nav: padding 0.25rem 0.5rem, font-size 0.875rem
+     - Structure: padding-top + title + gap + nav + padding-bottom
+     - Calcul: 8px + 24px + 16px + 28px + 8px = 84px */
+  --header-height-mobile: 84px;
+
+  /* Mobile landscape (480px-767px) :
+     - Header padding: 1rem, flex-direction: row
+     - Title: clamp(1.5rem, 3vw, 2rem) ≈ 1.75rem
+     - Nav: padding 0.5rem 1rem, font-size 0.875rem
+     - Structure: padding-top + max(title, nav) + padding-bottom
+     - Calcul: 16px + 28px + 16px = 60px */
+  --header-height-mobile-landscape: 60px;
+
+  /* Tablet (768px-1023px) :
+     - Header padding: 1rem 1.5rem, flex-direction: row
+     - Title: clamp(1.5rem, 2.5vw, 2rem) ≈ 1.75rem
+     - Nav: padding 0.5rem 1rem, font-size 1rem
+     - Structure: padding-top + max(title, nav) + padding-bottom
+     - Calcul: 16px + 32px + 16px = 64px */
+  --header-height-tablet: 64px;
+
+  /* Small desktop (1024px-1279px) :
+     - Header padding: 1.5rem 2rem, flex-direction: row
+     - Title: 2rem = 32px
+     - Nav: padding 0.5rem 1rem, font-size 1rem
+     - Structure: padding-top + max(title, nav) + padding-bottom
+     - Calcul: 24px + 32px + 24px = 80px */
+  --header-height-desktop: 80px;
+
+  /* Large desktop (1280px+) :
+     - Header padding: 1.5rem max(2rem, calc((100vw - 1280px) / 2))
+     - Title: clamp(2rem, 2vw, 2.5rem) ≈ 2.25rem
+     - Nav: padding 0.5rem 1rem, font-size 1rem
+     - Structure: padding-top + max(title, nav) + padding-bottom
+     - Calcul: 24px + 36px + 24px = 84px */
+  --header-height-large-desktop: 84px;
+
+  /* Hauteurs calculées du Footer par résolution */
+  /* Mobile portrait (max-width: 479px) :
+     - Footer padding: 1rem 0.5rem
+     - Copyright: clamp(0.75rem, 2.5vw, 0.875rem) ≈ 0.8rem
+     - Structure: padding-top + text + padding-bottom
+     - Calcul: 16px + 13px + 16px = 45px */
+  --footer-height-mobile: 45px;
+
+  /* Mobile landscape (480px-767px) :
+     - Footer padding: 1.5rem 1rem
+     - Copyright: 0.875rem = 14px
+     - Structure: padding-top + text + padding-bottom
+     - Calcul: 24px + 14px + 24px = 62px */
+  --footer-height-mobile-landscape: 62px;
+
+  /* Tablet and above (768px+) :
+     - Footer padding: 2rem
+     - Copyright: 0.875rem = 14px
+     - Structure: padding-top + text + padding-bottom
+     - Calcul: 32px + 14px + 32px = 78px */
+  --footer-height-tablet-up: 78px;
+
+  /* Hauteurs combinées Header + Footer pour calc() */
+  --header-footer-combined-mobile: calc(
+    var(--header-height-mobile) + var(--footer-height-mobile)
+  ); /* 129px */
+  --header-footer-combined-mobile-landscape: calc(
+    var(--header-height-mobile-landscape) +
+      var(--footer-height-mobile-landscape)
+  ); /* 122px */
+  --header-footer-combined-tablet: calc(
+    var(--header-height-tablet) + var(--footer-height-tablet-up)
+  ); /* 142px */
+  --header-footer-combined-desktop: calc(
+    var(--header-height-desktop) + var(--footer-height-tablet-up)
+  ); /* 158px */
+  --header-footer-combined-large-desktop: calc(
+    var(--header-height-large-desktop) + var(--footer-height-tablet-up)
+  ); /* 162px */
+}

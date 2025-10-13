@@ -52,14 +52,6 @@ export function useFormValidation(validationRules, initialValues = {}) {
     }));
   };
 
-  // Marquer un champ comme touché
-  const markAsTouched = (fieldName) => {
-    setTouched((prev) => ({
-      ...prev,
-      [fieldName]: true,
-    }));
-  };
-
   // Marquer tous les champs comme touchés
   const markAllAsTouched = () => {
     const allFields = Object.keys(validationRules);
@@ -117,7 +109,6 @@ export function useFormValidation(validationRules, initialValues = {}) {
     touched,
     isValid,
     handleChange,
-    markAsTouched,
     markAllAsTouched,
     handleSubmit,
     reset,
@@ -125,8 +116,5 @@ export function useFormValidation(validationRules, initialValues = {}) {
     validateAll,
     hasError,
     getError,
-    setValues,
-    setErrors,
-    setTouched,
   };
 }

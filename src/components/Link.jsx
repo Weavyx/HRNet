@@ -7,24 +7,9 @@ const Link = ({
   variant = 'secondary',
   size = 'medium',
   className = '',
-  external = false,
   ...props
 }) => {
   const linkClass = `link link--${variant} link--${size} ${className}`;
-
-  if (external) {
-    return (
-      <a
-        href={to}
-        className={linkClass}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      >
-        {children}
-      </a>
-    );
-  }
 
   return (
     <RouterLink
