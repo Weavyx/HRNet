@@ -4,8 +4,10 @@ Ce dossier contient les audits Lighthouse de la page `/employee-list.html` **ave
 
 ## 📋 Fichiers disponibles
 
-- `employee-list-desktop.json` - Audit JSON Desktop (1 enregistrement)
-- `employee-list-mobile.json` - Audit JSON Mobile (1 enregistrement)
+- `jquery-employees-with-data-desktop.json` - Audit JSON Desktop (1 enregistrement)
+- `jquery-employees-with-data-desktop.png` - Capture d'écran Desktop
+- `jquery-employees-with-data-mobile.json` - Audit JSON Mobile (1 enregistrement)
+- `jquery-employees-with-data-mobile.png` - Capture d'écran Mobile
 
 ## 📊 Scores obtenus (Conditions réelles)
 

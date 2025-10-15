@@ -4,8 +4,10 @@ Ce dossier contient les audits Lighthouse de la page `/employee-list.html` **san
 
 ## 📋 Fichiers disponibles
 
-- `employee-list-desktop.json` - Audit JSON Desktop (tableau vide)
-- `employee-list-mobile.json` - Audit JSON Mobile (tableau vide)
+- `jquery-employees-empty-desktop.json` - Audit JSON Desktop (tableau vide)
+- `jquery-employees-empty-desktop.png` - Capture d'écran Desktop
+- `jquery-employees-empty-mobile.json` - Audit JSON Mobile (tableau vide)
+- `jquery-employees-empty-mobile.png` - Capture d'écran Mobile
 
 ## 📊 Scores obtenus (Tableau vide)
 

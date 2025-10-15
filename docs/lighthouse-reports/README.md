@@ -6,25 +6,37 @@ Ce dossier contient les 8 rapports JSON des audits Lighthouse comparatifs entre 
 
 ```text
 lighthouse-reports/
-├── 📁 jquery-legacy/                        # Application jQuery originale
-│   ├── 📄 create-employee-desktop.json      # Page création - Desktop
-│   ├── 📄 create-employee-mobile.json       # Page création - Mobile
-│   ├── 📄 employee-list-desktop.json       # Liste employés - Desktop
-│   └── 📄 employee-list-mobile.json        # Liste employés - Mobile
-├── 📁 react-modern/                        # Application React migrée
-│   ├── 📄 create-employee-desktop.json      # Page création - Desktop
-│   ├── 📄 create-employee-mobile.json       # Page création - Mobile
-│   ├── 📁 employee-list-empty/              # Liste employés SANS données
-│   │   ├── 📄 employee-list-desktop.json    # Desktop - Table vide
-│   │   ├── 📄 employee-list-desktop.png     # Capture Desktop
-│   │   ├── 📄 employee-list-mobile.json     # Mobile - Table vide
-│   │   └── 📄 employee-list-mobile.png      # Capture Mobile
-│   └── 📁 employee-list-with-data/          # Liste employés AVEC données ⭐
-│       ├── 📄 employee-list-desktop.json    # Desktop - 1 enregistrement
-│       ├── 📄 employee-list-desktop.png     # Capture Desktop
-│       ├── 📄 employee-list-mobile.json     # Mobile - 1 enregistrement
-│       └── 📄 employee-list-mobile.png      # Capture Mobile
-└── 📄 README.md                            # Ce fichier
+├── 📁 jquery-legacy/                               # Application jQuery originale
+│   ├── 📄 jquery-create-employee-desktop.json      # Page création - Desktop
+│   ├── 📄 jquery-create-employee-desktop.png       # Capture création - Desktop
+│   ├── 📄 jquery-create-employee-mobile.json       # Page création - Mobile
+│   ├── 📄 jquery-create-employee-mobile.png        # Capture création - Mobile
+│   ├── 📁 employee-list-empty/                     # Liste employés SANS données
+│   │   ├── 📄 jquery-employees-empty-desktop.json  # Desktop - Table vide
+│   │   ├── 📄 jquery-employees-empty-desktop.png   # Capture Desktop vide
+│   │   ├── 📄 jquery-employees-empty-mobile.json   # Mobile - Table vide
+│   │   └── 📄 jquery-employees-empty-mobile.png    # Capture Mobile vide
+│   └── 📁 employee-list-with-data/                 # Liste employés AVEC données ⭐
+│       ├── 📄 jquery-employees-with-data-desktop.json  # Desktop - 1 enregistrement
+│       ├── 📄 jquery-employees-with-data-desktop.png   # Capture Desktop données
+│       ├── 📄 jquery-employees-with-data-mobile.json   # Mobile - 1 enregistrement
+│       └── 📄 jquery-employees-with-data-mobile.png    # Capture Mobile données
+├── 📁 react-modern/                               # Application React migrée
+│   ├── 📄 react-create-employee-desktop.json      # Page création - Desktop
+│   ├── 📄 react-create-employee-desktop.png       # Capture création - Desktop
+│   ├── 📄 react-create-employee-mobile.json       # Page création - Mobile
+│   ├── 📄 react-create-employee-mobile.png        # Capture création - Mobile
+│   ├── 📁 employee-list-empty/                    # Liste employés SANS données
+│   │   ├── 📄 react-employees-empty-desktop.json  # Desktop - Table vide
+│   │   ├── 📄 react-employees-empty-desktop.png   # Capture Desktop vide
+│   │   ├── 📄 react-employees-empty-mobile.json   # Mobile - Table vide
+│   │   └── 📄 react-employees-empty-mobile.png    # Capture Mobile vide
+│   └── 📁 employee-list-with-data/                # Liste employés AVEC données ⭐
+│       ├── 📄 react-employees-with-data-desktop.json  # Desktop - 1 enregistrement
+│       ├── 📄 react-employees-with-data-desktop.png   # Capture Desktop données
+│       ├── 📄 react-employees-with-data-mobile.json   # Mobile - 1 enregistrement
+│       └── 📄 react-employees-with-data-mobile.png    # Capture Mobile données
+└── 📄 README.md                                   # Ce fichier
 ```
 
 **Total : 12 fichiers JSON** + **Captures PNG**

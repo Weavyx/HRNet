@@ -4,24 +4,24 @@ Ce dossier contient les audits Lighthouse de l'application jQuery originale avec
 
 ## 📋 Structure des rapports (12 fichiers JSON + captures)
 
-### � **Page Création d'Employé**
+### 📄 **Page Création d'Employé - Scores**
 
-- `create-employee-desktop.json` - Audit JSON (Desktop)
-- `create-employee-desktop.png` - Capture d'écran (Desktop)
-- `create-employee-mobile.json` - Audit JSON (Mobile)
-- `create-employee-mobile.png` - Capture d'écran (Mobile)
+- `jquery-create-employee-desktop.json` - Audit JSON (Desktop)
+- `jquery-create-employee-desktop.png` - Capture d'écran (Desktop)
+- `jquery-create-employee-mobile.json` - Audit JSON (Mobile)
+- `jquery-create-employee-mobile.png` - Capture d'écran (Mobile)
 
 ### � **Page Liste d'Employés - Conditions Réalistes** ⭐
 
 - `employee-list-with-data/` - **Audits avec 1 enregistrement** (conditions réelles)
-  - `employee-list-desktop.json` - Tests Desktop avec données
-  - `employee-list-mobile.json` - Tests Mobile avec données
+  - `jquery-employees-with-data-desktop.json` - Tests Desktop avec données
+  - `jquery-employees-with-data-mobile.json` - Tests Mobile avec données
 
 ### 📋 **Page Liste d'Employés - Tableau Vide**
 
 - `employee-list-empty/` - Audits avec tableau vide (référence technique)
-  - `employee-list-desktop.json` - Tests Desktop table vide
-  - `employee-list-mobile.json` - Tests Mobile table vide
+  - `jquery-employees-empty-desktop.json` - Tests Desktop table vide
+  - `jquery-employees-empty-mobile.json` - Tests Mobile table vide
 
 ## 📊 Scores obtenus (Application jQuery Legacy)
 

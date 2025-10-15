@@ -4,10 +4,10 @@ Ce dossier contient les audits Lighthouse de la page `/employees` **avec 1 enreg
 
 ## 📋 Fichiers disponibles
 
-- `employee-list-desktop.json` - Audit JSON Desktop (1 enregistrement)
-- `employee-list-desktop.png` - Capture d'écran Desktop
-- `employee-list-mobile.json` - Audit JSON Mobile (1 enregistrement)
-- `employee-list-mobile.png` - Capture d'écran Mobile
+- `react-employees-with-data-desktop.json` - Audit JSON Desktop (1 enregistrement)
+- `react-employees-with-data-desktop.png` - Capture d'écran Desktop
+- `react-employees-with-data-mobile.json` - Audit JSON Mobile (1 enregistrement)
+- `react-employees-with-data-mobile.png` - Capture d'écran Mobile
 
 ## 📊 Scores obtenus (Conditions réelles) ⭐
 

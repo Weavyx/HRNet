@@ -4,28 +4,28 @@ Ce dossier contient les audits Lighthouse de l'application React migrée avec un
 
 ## 📋 Structure des rapports (12 fichiers JSON + captures)
 
-### � **Page Création d'Employé**
+### 📄 **Page Création d'Employé**
 
-- `create-employee-desktop.json` - Audit JSON (Desktop)
-- `create-employee-desktop.png` - Capture d'écran (Desktop)
-- `create-employee-mobile.json` - Audit JSON (Mobile)
-- `create-employee-mobile.png` - Capture d'écran (Mobile)
+- `react-create-employee-desktop.json` - Audit JSON (Desktop)
+- `react-create-employee-desktop.png` - Capture d'écran (Desktop)
+- `react-create-employee-mobile.json` - Audit JSON (Mobile)
+- `react-create-employee-mobile.png` - Capture d'écran (Mobile)
 
 ### � **Page Liste d'Employés - Conditions Réalistes** ⭐
 
 - `employee-list-with-data/` - **Audits avec 1 enregistrement** (conditions réelles)
-  - `employee-list-desktop.json` / `.png` - Tests Desktop avec données
-  - `employee-list-mobile.json` / `.png` - Tests Mobile avec données
+  - `react-employees-with-data-desktop.json` / `.png` - Tests Desktop avec données
+  - `react-employees-with-data-mobile.json` / `.png` - Tests Mobile avec données
 
 ### 📋 **Page Liste d'Employés - Tableau Vide**
 
 - `employee-list-empty/` - Audits avec tableau vide (référence technique)
-  - `employee-list-desktop.json` / `.png` - Tests Desktop table vide
-  - `employee-list-mobile.json` / `.png` - Tests Mobile table vide
+  - `react-employees-empty-desktop.json` / `.png` - Tests Desktop table vide
+  - `react-employees-empty-mobile.json` / `.png` - Tests Mobile table vide
 
 ## 📊 Scores obtenus (Application React Modern)
 
-### 📄 **Page Création d'Employé**
+### 📄 **Page Création d'Employé (Scores)**
 
 - **Desktop** : Perf 99 | A11y 100 | BP 100 | SEO 100 | **Moyenne : 99.75/100** ✨
 - **Mobile** : Perf 95 | A11y 100 | BP 100 | SEO 100 | **Moyenne : 98.75/100** ✨
