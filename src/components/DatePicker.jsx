@@ -62,7 +62,7 @@ const CustomDatePicker = ({
       dropdownMode="select"
       autoComplete="off"
       showPopperArrow={false}
-      calendarStartDay={1} // Commence la semaine par lundi
+      calendarStartDay={0} // Commence la semaine par Dimanche
       {...props}
     />
   );
