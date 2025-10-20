@@ -26,7 +26,7 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
     try {
       localStorage.setItem(
         "hrnet_employees",
-        JSON.stringify(state.employees.employees)
+        JSON.stringify(state.employees.employees),
       );
     } catch (error) {
       console.error("Error saving to localStorage:", error);
