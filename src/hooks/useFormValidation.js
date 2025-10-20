@@ -43,26 +43,26 @@ export function useFormValidation(initialValues = {}) {
   const validationRules = {
     firstName: (value) => {
       if (!value || value.trim().length === 0) {
-        return "Le prénom est requis";
+        return "First name is required";
       }
       if (value.trim().length < 2) {
-        return "Le prénom doit contenir au moins 2 caractères";
+        return "First name must contain at least 2 characters";
       }
       if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-        return "Le prénom ne doit contenir que des lettres, espaces, tirets et apostrophes";
+        return "First name must contain only letters, spaces, hyphens and apostrophes";
       }
       return "";
     },
 
     lastName: (value) => {
       if (!value || value.trim().length === 0) {
-        return "Le nom de famille est requis";
+        return "Last name is required";
       }
       if (value.trim().length < 2) {
-        return "Le nom de famille doit contenir au moins 2 caractères";
+        return "Last name must contain at least 2 characters";
       }
       if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-        return "Le nom de famille ne doit contenir que des lettres, espaces, tirets et apostrophes";
+        return "Last name must contain only letters, spaces, hyphens and apostrophes";
       }
       return "";
     },
@@ -84,13 +84,13 @@ export function useFormValidation(initialValues = {}) {
       }
 
       if (birthDate > today) {
-        return "La date de naissance ne peut pas être dans le futur";
+        return "Birth date cannot be in the future";
       }
       if (age < 16) {
-        return "L'employé doit avoir au moins 16 ans";
+        return "Employee must be at least 16 years old";
       }
       if (age > 120) {
-        return "Veuillez vérifier la date de naissance";
+        return "Please check the birth date";
       }
       return "";
     },
@@ -105,7 +105,7 @@ export function useFormValidation(initialValues = {}) {
       oneYearAgo.setFullYear(today.getFullYear() - 1);
 
       if (startDate < oneYearAgo) {
-        return "La date de début ne peut pas être antérieure à un an";
+        return "Start date cannot be more than one year ago";
       }
       return "";
     },
@@ -115,10 +115,10 @@ export function useFormValidation(initialValues = {}) {
         return ""; // Optionnel
       }
       if (value.trim().length < 5) {
-        return "L'adresse doit contenir au moins 5 caractères";
+        return "Address must contain at least 5 characters";
       }
       if (!/^[a-zA-Z0-9À-ÿ\s,.-]+$/.test(value)) {
-        return "L'adresse contient des caractères invalides";
+        return "Address contains invalid characters";
       }
       return "";
     },
@@ -128,10 +128,10 @@ export function useFormValidation(initialValues = {}) {
         return ""; // Optionnel
       }
       if (value.trim().length < 2) {
-        return "La ville doit contenir au moins 2 caractères";
+        return "City must contain at least 2 characters";
       }
       if (!/^[a-zA-ZÀ-ÿ\s-']+$/.test(value)) {
-        return "La ville ne doit contenir que des lettres, espaces, tirets et apostrophes";
+        return "City must contain only letters, spaces, hyphens and apostrophes";
       }
       return "";
     },
@@ -142,7 +142,7 @@ export function useFormValidation(initialValues = {}) {
       }
       const validStates = US_STATES.map((state) => state.value);
       if (!validStates.includes(value)) {
-        return "Veuillez sélectionner un état valide";
+        return "Please select a valid state";
       }
       return "";
     },
@@ -152,18 +152,18 @@ export function useFormValidation(initialValues = {}) {
         return ""; // Optionnel
       }
       if (!/^\d{5}(-\d{4})?$/.test(value)) {
-        return "Le code postal doit être au format 12345 ou 12345-6789";
+        return "Zip code must be in format 12345 or 12345-6789";
       }
       return "";
     },
 
     department: (value) => {
       if (!value || value.trim().length === 0) {
-        return "Le département est requis";
+        return "Department is required";
       }
       const validDepartments = DEPARTMENTS.map((dept) => dept.value);
       if (!validDepartments.includes(value)) {
-        return "Veuillez sélectionner un département valide";
+        return "Please select a valid department";
       }
       return "";
     },

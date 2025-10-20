@@ -37,9 +37,9 @@ const ConditionalTable = ({ employees, quickFilterText, onGridReady }) => {
       <div className="employees__empty">
         <div className="employees__empty-icon">👥</div>
         <div className="employees__empty-title">
-          Aucun employé trouvé
+          No employees found
         </div>
-        <div>Ajoutez votre premier employé !</div>
+        <div>Add your first employee!</div>
       </div>
     );
   }
@@ -51,7 +51,7 @@ const ConditionalTable = ({ employees, quickFilterText, onGridReady }) => {
         <div className="loading-table__content">
           <div className="loading-table__spinner"></div>
           <span className="loading-table__message">
-            Chargement du tableau de données...
+            Loading data table...
           </span>
         </div>
       </div>

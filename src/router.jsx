@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: (
-          <Suspense fallback={<PageLoader message="Chargement de la page de création d'employé..." />}>
+          <Suspense fallback={<PageLoader message="Loading create employee page..." />}>
             <CreateEmployee />
           </Suspense>
         ),
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       {
         path: "employees",
         element: (
-          <Suspense fallback={<PageLoader message="Chargement des employés..." />}>
+          <Suspense fallback={<PageLoader message="Loading employees..." />}>
             <Employees />
           </Suspense>
         ),

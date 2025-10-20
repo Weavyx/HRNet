@@ -26,10 +26,10 @@ export const localStorageMiddleware = (store) => (next) => (action) => {
     try {
       localStorage.setItem(
         "hrnet_employees",
-        JSON.stringify(state.employees.employees),
+        JSON.stringify(state.employees.employees)
       );
     } catch (error) {
-      console.error("Erreur lors de la sauvegarde dans localStorage:", error);
+      console.error("Error saving to localStorage:", error);
     }
   }
 
@@ -60,7 +60,7 @@ export const loadFromLocalStorage = () => {
       return JSON.parse(savedEmployees);
     }
   } catch (error) {
-    console.error("Erreur lors du chargement depuis localStorage:", error);
+    console.error("Error loading from localStorage:", error);
   }
 
   /** Retourner un tableau vide si aucune donnée n'est trouvée */
