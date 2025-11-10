@@ -36,6 +36,7 @@ dist-ssr
 .env.local
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
 
 # Temporary files
@@ -49,3 +50,5 @@ dist-ssr
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+.htaccess

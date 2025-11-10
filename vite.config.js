@@ -14,6 +14,7 @@ import { visualizer } from "rollup-plugin-visualizer";
  * @type {import('vite').UserConfig}
  */
 export default defineConfig({
+  base: process.env.VITE_BASE_URL || '/',
   plugins: [
     react(),
     /**
