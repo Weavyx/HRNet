@@ -88,17 +88,35 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hrnet.maximenardelli.fr/" />
   <meta property="og:title" content="HRNet - Gestion des Ressources Humaines" />
   <meta property="og:description"
     content="Application moderne de gestion des ressources humaines. Interface intuitive pour gérer vos employés efficacement." />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content="https://hrnet.maximenardelli.fr/" />
   <meta name="twitter:title" content="HRNet - Gestion des Ressources Humaines" />
   <meta name="twitter:description"
     content="Application moderne de gestion des ressources humaines. Interface intuitive pour gérer vos employés efficacement." />
 
   <title>HRNet - Gestion des Ressources Humaines</title>
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "cb48ba12d16c480091df3d8ab9910709"}' data-cf-beacon-allow='navigator.sendBeacon'></script>
+  <!-- End Cloudflare Web Analytics -->
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {
+          console.log('Service Worker registration failed');
+        });
+      });
+    }
+  </script>
 </head>
 
 <body>

@@ -1,7 +1,46 @@
-# Robots.txt pour HRNet
+# HRNet - Robots.txt
+# Guide pour les moteurs de recherche
 # https://www.robotstxt.org/robotstxt.html
 
+# Pour tous les robots
 User-agent: *
-
-# Autoriser l'indexation de l'application
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Disallow: /*.env$
+Disallow: /public/
+
+# Délai de crawl (en secondes)
+Crawl-delay: 1
+
+# Taux de requête maximum (requêtes par heure)
+Request-rate: 30/1h
+
+# Sitemap
+Sitemap: https://hrnet.maximenardelli.fr/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Autres robots spécifiques
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
